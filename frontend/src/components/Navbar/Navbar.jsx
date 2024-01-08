@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../redux/actions/authActions";
-import "./Navbar.css";
+
 const Navbar = () => {
   const authState = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="navbar flex justify-between sticky top-0 p-4 bg-white shadow-sm items-center">
+      <header className="flex justify-between sticky top-0 p-4 bg-white shadow-sm items-center">
         <h2 className="cursor-pointer uppercase font-medium">
           <Link to="/"> Task Manager </Link>
         </h2>
@@ -37,7 +37,9 @@ const Navbar = () => {
               </li>
             </>
           ) : (
-            <></>
+            <li className="py-2 px-3 cursor-pointer text-primary hover:bg-gray-100 transition rounded-sm">
+              <Link to="/login">Login</Link>
+            </li>
           )}
         </ul>
         <span className="md:hidden cursor-pointer" onClick={toggleNavbar}>
@@ -70,14 +72,9 @@ const Navbar = () => {
                 </li>
               </>
             ) : (
-              <div className="left-side">
-                <li className="login py-2 px-3 cursor-pointer text-primary hover:bg-gray-200 transition rounded-sm">
-                  <Link to="/login">Login</Link>
-                </li>
-                <li className="signup py-2 px-3 cursor-pointer text-primary hover:bg-gray-200 transition rounded-sm">
-                  <Link to="/signup">Signup</Link>
-                </li>
-              </div>
+              <li className="py-2 px-3 cursor-pointer text-primary hover:bg-gray-200 transition rounded-sm">
+                <Link to="/login">Login</Link>
+              </li>
             )}
           </ul>
         </div>
