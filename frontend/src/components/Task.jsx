@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Loader from "./utils/Loader";
-
 const Tasks = () => {
   const authState = useSelector((state) => state.authReducer);
   const [tasks, setTasks] = useState([]);
@@ -70,13 +69,11 @@ const Tasks = () => {
                       className="ml-auto mr-2 text-green-600 cursor-pointer">
                       <i className="fa-solid fa-pen"></i>
                     </Link>
-
                     <span
                       className="text-red-500 cursor-pointer"
                       onClick={() => handleDelete(task._id)}>
                       <i className="fa-solid fa-trash"></i>
                     </span>
-                    {/* <i className="fa-solid fa-trash"></i> */}
                   </div>
                   <div className="whitespace-pre">{task.description}</div>
                 </div>

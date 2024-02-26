@@ -9,7 +9,7 @@ const {
 } = require("../controllers/taskController");
 const { verifyAccessToken } = require("../middleware/checkAccessToken");
 
-// Routes beginning with /api/tasks
+// Routes beginning with /api/v1/tasks
 router.get("/", verifyAccessToken, getTasks);
 router.get("/:taskId", verifyAccessToken, getTask);
 router.post("/", verifyAccessToken, postTask);

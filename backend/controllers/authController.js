@@ -6,7 +6,7 @@ const { validateEmail } = require("../utils/validation");
 exports.signup = async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    console.log(username, email, password);
+
     if (!username || !email || !password) {
       return res.status(400).json({ msg: "Please fill all the fields" });
     }
@@ -17,7 +17,6 @@ exports.signup = async (req, res) => {
     ) {
       return res.status(400).json({ msg: "Please send string values only" });
     }
-
     if (password.length < 4) {
       return res
         .status(400)
@@ -38,7 +37,6 @@ exports.signup = async (req, res) => {
       .status(200)
       .json({ msg: "Congratulations!! Account has been created for you.." });
   } catch (err) {
-    console.error(err);
     return res.status(500).json({ msg: "Internal Server Error" });
   }
 };
@@ -59,8 +57,7 @@ exports.login = async (req, res) => {
         .json({ status: false, msg: "This email is not registered!!" });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log(password);
-    console.log(isMatch);
+
     if (!isMatch)
       return res
         .status(400)
@@ -71,7 +68,6 @@ exports.login = async (req, res) => {
       .status(200)
       .json({ token, user, status: true, msg: "Login successful.." });
   } catch (err) {
-    console.error(err);
     return res
       .status(500)
       .json({ status: false, msg: "Internal Server Error" });

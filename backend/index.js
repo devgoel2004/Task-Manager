@@ -15,10 +15,6 @@ connectDb();
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/task", taskRoute);
 app.use("/api/v1/profile", profileRoute);
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+
 const port = process.env.PORT;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+app.listen(port, () => {});

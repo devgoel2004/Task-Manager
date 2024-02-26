@@ -32,7 +32,6 @@ exports.getTask = async (req, res) => {
       .status(200)
       .json({ task, status: true, msg: "Task found successfully.." });
   } catch (err) {
-    console.error(err);
     return res
       .status(500)
       .json({ status: false, msg: "Internal Server Error" });
@@ -52,7 +51,6 @@ exports.postTask = async (req, res) => {
       .status(200)
       .json({ task, status: true, msg: "Task created successfully.." });
   } catch (err) {
-    console.error(err);
     return res
       .status(500)
       .json({ status: false, msg: "Internal Server Error" });
@@ -94,7 +92,6 @@ exports.putTask = async (req, res) => {
       .status(200)
       .json({ task, status: true, msg: "Task updated successfully.." });
   } catch (err) {
-    console.error(err);
     return res
       .status(500)
       .json({ status: false, msg: "Internal Server Error" });
@@ -123,7 +120,6 @@ exports.deleteTask = async (req, res) => {
     await Task.findByIdAndDelete(req.params.taskId);
     res.status(200).json({ status: true, msg: "Task deleted successfully.." });
   } catch (err) {
-    console.error(err);
     return res
       .status(500)
       .json({ status: false, msg: "Internal Server Error" });
